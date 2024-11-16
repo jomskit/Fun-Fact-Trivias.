@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pop-Up Facts Sidebar</title>
+<style>
+    /* Main style for the sidebar */
+    #popup-sidebar {
+        position: fixed;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 300px;
+        padding: 20px;
+        background-color: #f7f7f7;
+        border-left: 3px solid #3498db;
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+        font-family: Arial, sans-serif;
+        z-index: 1000;
+    }
+
+    /* Fact styling */
+    .fact {
+        display: none;
+    }
+    .fact.active {
+        display: block;
+    }
+
+    /* Buttons */
+    #controls {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
+    }
+    .button {
+        cursor: pointer;
+        padding: 8px 12px;
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        font-size: 14px;
+    }
+</style>
+</head>
+<body>
+
+<div id="popup-sidebar">
+    <div id="facts">
+        <!-- Updated facts without numbers and bold formatting -->
+        <div class="fact active"><strong>Philippine Economic Growth</strong>: The Philippines' GDP grew by 7.6% in 2022, one of the highest growth rates in Asia, driven by sectors like business process outsourcing (BPO), tourism, and remittances from Overseas Filipino Workers (OFWs).</div>
+        <div class="fact"><strong>BPO Industry Success</strong>: The BPO sector is the second-largest contributor to the Philippine economy, employing over 1.4 million people and expected to create up to 1.5 million new jobs by 2028.</div>
+        <div class="fact"><strong>Agriculture’s Role</strong>: Around 23% of Filipino jobs are in agriculture, making it a vital sector. Innovations in agriculture can create more stable jobs, which is crucial for economic growth in rural areas.</div>
+        <div class="fact"><strong>OFW Remittances</strong>: Filipino workers abroad sent home over $30 billion in remittances in 2022, bolstering the country’s economy and providing financial support for millions of Filipino families.</div>
+        <div class="fact"><strong>Sustainable Job Growth</strong>: The Philippines is focusing on renewable energy, with a goal of sourcing 35% of its power from renewables by 2030. This push will create numerous jobs in sustainable energy sectors.</div>
+        <div class="fact"><strong>Empowerment Through Employment</strong>: Jobs provide not only financial support but also help individuals build skills, enhance self-esteem, and contribute to their communities. It’s a cornerstone of SDG No. 8, promoting “decent work for all.”</div>
+        <div class="fact"><strong>Skills for the Future</strong>: The World Economic Forum predicts that by 2025, 85 million jobs may be displaced by automation, but 97 million new jobs could emerge. Continuous learning and adapting to new skills are key for future job stability.</div>
+        <div class="fact"><strong>Career Growth Mindset</strong>: Developing a “growth mindset” can boost career success. Studies show that people who believe their abilities can grow through effort tend to excel and find greater satisfaction in their careers.</div>
+        <div class="fact"><strong>Youth in the Workforce</strong>: Young people aged 15-24 make up around 20% of the Filipino labor force. Investing in quality education and vocational training can ensure this youth workforce becomes a driving force in the economy.</div>
+        <div class="fact"><strong>Meaningful Work Matters</strong>: Studies show that 60% of employees prioritize meaningful work over high salaries. Jobs that align with personal values tend to lead to higher satisfaction and productivity.</div>
+        <div class="fact"><strong>Exploring Career Paths Early</strong>: Exploring different fields before college can significantly help in making informed career decisions, increasing the likelihood of long-term satisfaction and economic stability.</div>
+        <div class="fact"><strong>Vocational Training Success</strong>: Short-term, specialized training programs, such as those for welding, software development, and culinary arts, have proven effective in the Philippines, leading to immediate employment opportunities and job security.</div>
+        <div class="fact"><strong>SDG No. 8 Goal</strong>: SDG No. 8 aims for “sustained, inclusive, and sustainable economic growth, full and productive employment, and decent work for all.” It’s about creating fair job opportunities that foster both individual growth and community well-being.</div>
+        <div class="fact"><strong>Global Target for Unemployment</strong>: SDG No. 8 aims to reduce the global unemployment rate to 4% by 2030 by creating more jobs that support sustainable development and quality of life.</div>
+        <div class="fact"><strong>Women in the Workforce</strong>: Economists suggest that if women participated equally in the workforce, global GDP could increase by up to $28 trillion by 2025. In the Philippines, programs are promoting gender equality in STEM and other high-growth sectors.</div>
+        <div class="fact"><strong>Green Economy Growth</strong>: The shift to a “green economy” is projected to create 24 million jobs globally by 2030. Fields like renewable energy, sustainable farming, and eco-tourism are emerging as vital job sectors for sustainable development.</div>
+        <div class="fact"><strong>Small Businesses, Big Impact</strong>: Micro, small, and medium enterprises (MSMEs) make up 99.5% of Philippine businesses and are crucial for economic growth, responsible for over 63% of employment.</div>
+        <div class="fact"><strong>Lifelong Learning</strong>: It’s estimated that by 2030, the average person will need to reskill multiple times throughout their life to stay competitive in an ever-evolving job market.</div>
+        <div class="fact"><strong>Entrepreneurship Opportunities</strong>: The Philippines ranks 16th among the best countries for entrepreneurship in Asia, with more young people venturing into startups, which contributes to job creation and economic diversity.</div>
+        <div class="fact"><strong>Financial Literacy</strong>: Financial literacy in career planning is a growing need. Studies show that employees who understand budgeting and investments are more likely to experience long-term economic stability.</div>
+        <!-- Add the remaining facts here following the same structure -->
+    </div>
+
+    <!-- Navigation controls -->
+    <div id="controls">
+        <button class="button" onclick="prevFact()">Previous</button>
+        <button class="button" onclick="nextFact()">Next</button>
+    </div>
+</div>
+
+<script>
+    // JavaScript to handle fact switching
+    let currentFact = 0;
+    const facts = document.querySelectorAll('.fact');
+
+    function showFact(index) {
+        facts[currentFact].classList.remove('active');
+        facts[index].classList.add('active');
+        currentFact = index;
+    }
+
+    function nextFact() {
+        const nextIndex = (currentFact + 1) % facts.length;
+        showFact(nextIndex);
+    }
+
+    function prevFact() {
+        const prevIndex = (currentFact - 1 + facts.length) % facts.length;
+        showFact(prevIndex);
+    }
+</script>
+
+</body>
+</html>
